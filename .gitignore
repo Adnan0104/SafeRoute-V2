@@ -1,0 +1,58 @@
+# ============================================================
+# SafeRoute V2 — Git Ignore
+# ============================================================
+
+# ── Environment & Secrets ─────────────────────────────────────
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+*.pem
+*.key
+
+# ── Dependencies ──────────────────────────────────────────────
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# ── Build Outputs ─────────────────────────────────────────────
+.next/
+out/
+dist/
+build/
+*.egg-info/
+
+# ── IDE & OS ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Testing ───────────────────────────────────────────────────
+coverage/
+htmlcov/
+.coverage
+.pytest_cache/
+playwright-report/
+test-results/
+
+# ── Logs ──────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── Database ──────────────────────────────────────────────────
+*.sqlite3
+*.db
+
+# ── Misc ──────────────────────────────────────────────────────
+.vercel/
+.turbo/
