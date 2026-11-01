@@ -1,6 +1,6 @@
 """SafeRoute V2 — Schemas package."""
 
-from app.schemas.schemas import (  # noqa: F401
+from app.schemas.schemas import (
     ApiResponse,
     Coordinates,
     CreateReportRequest,
@@ -20,3 +20,24 @@ from app.schemas.schemas import (  # noqa: F401
     TradeOffs,
     TravelMode,
 )
+
+__all__ = [
+    "ApiResponse",
+    "Coordinates",
+    "CreateReportRequest",
+    "DataCoverage",
+    "GeoJsonLineString",
+    "ModerateReportRequest",
+    "ReportCategory",
+    "ReportSeverity",
+    "ReportStatus",
+    "RouteResult",
+    "RouteSearchMetadata",
+    "RouteSearchRequest",
+    "RouteSearchResponse",
+    "RouteTreatment",
+    "SafetyFactor",
+    "SafetyInfo",
+    "TradeOffs",
+    "TravelMode",
+]
