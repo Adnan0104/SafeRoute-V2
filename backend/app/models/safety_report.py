@@ -186,6 +186,27 @@ class SafetyReport(Base):
         Index("idx_safety_reports_lat_lng", "latitude", "longitude"),
     )
 
+    def __init__(self, **kwargs: Any) -> None:
+        super().__init__(**kwargs)
+        if self.location is None and self.latitude is not None and self.longitude is not None:
+            self.sync_location()
+
+    def sync_location(self) -> None:
+        """Synchronize the PostGIS Point geometry from latitude and longitude."""
+        if self.latitude is not None and self.longitude is not None:
+            # In WGS84, X is longitude and Y is latitude
+            self.location = f"SRID=4326;POINT({self.longitude} {self.latitude})"
+
+    def update_coordinates(self, latitude: float, longitude: float) -> None:
+        """Update coordinates and ensure geometry remains consistent."""
+        if not (-90.0 <= latitude <= 90.0):
+            raise ValueError(f"Latitude must be between -90 and 90, got {latitude}")
+        if not (-180.0 <= longitude <= 180.0):
+            raise ValueError(f"Longitude must be between -180 and 180, got {longitude}")
+        self.latitude = latitude
+        self.longitude = longitude
+        self.sync_location()
+
     def __repr__(self) -> str:
         return (
             f"<SafetyReport id={self.id} category={self.category} status={self.status}>"
